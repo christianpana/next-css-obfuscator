@@ -136,21 +136,21 @@ function searchStringLiterals(path: NodePath<t.Node>,
       path.replaceWith(t.stringLiteral(replacement));
     }
   }
-  else if (t.isIdentifier(path.node)) {
-    const variableName = path.node.name;
-    const binding = path.scope.getBinding(variableName);
-    if (binding && t.isVariableDeclarator(binding.path.node)) {
-      const init = binding.path.get("init");
-      if (init && !Array.isArray(init)) {
-        searchStringLiterals(init, callback, scannedNodes);
-      }
-    } else if (binding && t.isFunctionDeclaration(binding.path.node)) {
-      const body = binding.path.get("body");
-      if (body && !Array.isArray(body)) {
-        searchStringLiterals(body, callback, scannedNodes);
-      }
-    }
-  }
+  // else if (t.isIdentifier(path.node)) {
+  //   const variableName = path.node.name;
+  //   const binding = path.scope.getBinding(variableName);
+  //   if (binding && t.isVariableDeclarator(binding.path.node)) {
+  //     const init = binding.path.get("init");
+  //     if (init && !Array.isArray(init)) {
+  //       searchStringLiterals(init, callback, scannedNodes);
+  //     }
+  //   } else if (binding && t.isFunctionDeclaration(binding.path.node)) {
+  //     const body = binding.path.get("body");
+  //     if (body && !Array.isArray(body)) {
+  //       searchStringLiterals(body, callback, scannedNodes);
+  //     }
+  //   }
+  // }
   /* call expression (e.g. const a = call()) */
   else if (t.isCallExpression(path.node)) {
     const callee = path.get("callee");

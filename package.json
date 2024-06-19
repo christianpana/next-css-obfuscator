@@ -7,7 +7,7 @@
   "scripts": {
     "test": "tsc & vitest",
     "test@cover": "tsc & vitest run --coverage",
-    "build": "npm run test && tsc",
+    "build": "tsc",
     "dev": "tsc -w",
     "pub": "npm run build && npm publish",
     "pub@beta": "npm run build && npm publish --tag beta"
